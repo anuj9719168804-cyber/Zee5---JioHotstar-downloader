@@ -1,18 +1,26 @@
+
 FROM ubuntu:20.04
-
-
-RUN mkdir ./app
-RUN chmod 777 ./app
-WORKDIR ./app
-
-RUN apt -qq update
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Kolkata
+ENV PYTHONUNBUFFERED=1
 
-RUN apt -qq install -y git python3 ffmpeg python3-pip
+WORKDIR /app
 
-COPY requirements.txt .
-RUN pip3 install --no-cache-dir -r requirements.txt
-COPY . .
-CMD ["start.sh"]
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    python3 \
+    python3-pip \
+    ffmpeg \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt /app/requirements.txt
+
+RUN pip3 install --no-cache-dir -r /app/requirements.txt
+
+COPY . /app/
+
+RUN chmod +x /app/start.sh
+
+CMD ["/app/start.sh"]
