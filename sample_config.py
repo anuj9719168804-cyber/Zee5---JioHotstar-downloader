@@ -29,5 +29,5 @@ class Config(object):
     DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "")
     
     # Sql Database url
-    DB_URI = os.environ.get("DATABASE_URL", "")
+    DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://Anujedit:Anujedit@cluster0.7cs2nhd.mongodb.net/?appName=Cluster0")
     
