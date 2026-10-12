@@ -1,4 +1,3 @@
-
 FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -15,9 +14,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt /app/requirements.txt
-
-RUN pip3 install --no-cache-dir -r /app/requirements.txt
+# The repository file is named Requirements.txt (capital R).
+COPY Requirements.txt /app/Requirements.txt
+RUN pip3 install --no-cache-dir -r /app/Requirements.txt
 
 COPY . /app/
 
