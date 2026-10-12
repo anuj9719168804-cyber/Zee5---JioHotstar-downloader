@@ -7,11 +7,11 @@ class Config(object):
 
     # The Telegram API things
     # Get these values from my.telegram.org
-    APP_ID = int(os.environ.get("APP_ID", 12345))
-    API_HASH = os.environ.get("API_HASH", "")
+    APP_ID = int(os.environ.get("APP_ID", 33029767))
+    API_HASH = os.environ.get("API_HASH", "5d897bed11bc8b062a12f6c1c3c5360a")
 
     # Array to store users who are authorized to use the bot
-    AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
+    AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "8729304171").split())
 
     # Banned Unwanted Members..
     BANNED_USERS = set(int(x) for x in os.environ.get("BANNED_USERS", "").split())
