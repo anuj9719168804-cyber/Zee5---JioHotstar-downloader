@@ -11,15 +11,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 \
     python3-pip \
     ffmpeg \
+    bash \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-# The repository file is named Requirements.txt (capital R).
 COPY Requirements.txt /app/Requirements.txt
 RUN pip3 install --no-cache-dir -r /app/Requirements.txt
 
 COPY . /app/
 
-RUN chmod +x /app/start.sh
+# Run the script through bash to avoid exec-format errors from missing shebang
+# or Windows CRLF line endings.
+RUN sed -i 's/\r$//' /app/start.sh && chmod +x /app/start.sh
 
-CMD ["/app/start.sh"]
+CMD ["bash", "/app/start.sh"]
