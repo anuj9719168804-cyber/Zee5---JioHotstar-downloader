@@ -11,7 +11,7 @@ class Config(object):
     API_HASH = os.environ.get("API_HASH", "5d897bed11bc8b062a12f6c1c3c5360a")
 
     # Array to store users who are authorized to use the bot
-    AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "8729304171").split())
+    AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "680815375").split())
 
     # Banned Unwanted Members..
     BANNED_USERS = set(int(x) for x in os.environ.get("BANNED_USERS", "").split())
